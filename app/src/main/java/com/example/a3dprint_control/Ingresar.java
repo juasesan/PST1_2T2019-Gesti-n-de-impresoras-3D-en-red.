@@ -2,12 +2,17 @@ package com.example.a3dprint_control;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Ingresar extends AppCompatActivity {
+import java.util.Arrays;
+import java.util.List;
+
+public class Ingresar extends Activity {
 
     private String serverIP = "remotemysql.com";
     private String port = "3306";
@@ -26,8 +31,9 @@ public class Ingresar extends AppCompatActivity {
         contra=(EditText)findViewById(R.id.contraseña);
     }
 
-    public void volver(View view) {
-        finish();
+    public void registrar(View view) {
+        Intent i = new Intent(this, Registrar.class );
+        startActivity(i);
     }
 
     public void verificarUsuario(View view)
@@ -46,7 +52,6 @@ public class Ingresar extends AppCompatActivity {
             Class.forName(driver).newInstance();
             resultadoSQL = new AsyncQuery().execute(datosConexion).get();
             Toast.makeText(Ingresar.this,"Conexión Establecida", Toast.LENGTH_LONG).show();
-
             String resultadoConsulta = resultadoSQL[0];
             if ((resultadoConsulta.indexOf(corr.getText().toString())>-1) &&(resultadoConsulta.indexOf(contra.getText().toString())>-1)){
                 Toast.makeText(this,"Si existe el usuario", Toast.LENGTH_LONG).show();

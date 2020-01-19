@@ -2,10 +2,12 @@ package com.example.a3dprint_control;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Registrar extends AppCompatActivity {
+public class Registrar extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +15,8 @@ public class Registrar extends AppCompatActivity {
         setContentView(R.layout.activity_registrar);
     }
 
-    public void volver(View view) {
-        finish();
+    public void siguiente(View view) {
+        Intent i = new Intent(this, Printers.class );
+        startActivity(i);
     }
 }
