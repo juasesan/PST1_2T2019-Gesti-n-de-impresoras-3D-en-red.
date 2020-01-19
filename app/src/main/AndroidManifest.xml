@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.a3dprint_control">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Registrar"></activity>
+        <activity android:name=".Consulta"></activity>
+        <activity android:name=".Printer2" />
+        <activity android:name=".Printer1" />
+        <activity android:name=".Printers" />
+        <activity android:name=".Inicio" />
+        <activity android:name=".Registrar" />
         <activity android:name=".Ingresar" />
-        <activity android:name=".Inicio">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
