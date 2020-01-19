@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':libs'
 rootProject.name='3Dprint_Control'
