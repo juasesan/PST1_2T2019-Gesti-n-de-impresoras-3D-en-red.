@@ -53,7 +53,14 @@ public class Ingresar extends Activity {
             resultadoSQL = new AsyncQuery().execute(datosConexion).get();
             Toast.makeText(Ingresar.this,"Conexión Establecida", Toast.LENGTH_LONG).show();
             String resultadoConsulta = resultadoSQL[0];
-            if ((resultadoConsulta.indexOf(corr.getText().toString())>-1) &&(resultadoConsulta.indexOf(contra.getText().toString())>-1)){
+            String[] lista=resultadoConsulta.split("\n");
+            boolean veridico=false;
+            for(String dato: lista){
+                if ((dato.indexOf(corr.getText().toString())>-1)&&(dato.indexOf(contra.getText().toString())>-1)&&(!(corr.getText().toString()).equals(""))&&(!(contra.getText().toString()).equals(""))){
+                    veridico=true;
+                }
+            }
+            if(veridico){
                 Toast.makeText(this,"Si existe el usuario", Toast.LENGTH_LONG).show();
             }else{
                 Toast.makeText(this,"Usuario no valido", Toast.LENGTH_LONG).show();
