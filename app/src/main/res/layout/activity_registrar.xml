@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/nombre"
         android:layout_width="312dp"
         android:layout_height="53dp"
         android:layout_marginTop="28dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/usuario"
         android:layout_width="312dp"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
@@ -42,10 +42,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/correo3"
         android:layout_width="312dp"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
@@ -54,22 +54,22 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/usuario" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:onClick="siguiente"
+        android:onClick="insertarUsuario"
         android:text="Registrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText12" />
+        app:layout_constraintTop_toBottomOf="@+id/contraseña3" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/contraseña3"
         android:layout_width="312dp"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
@@ -79,6 +79,6 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
+        app:layout_constraintTop_toBottomOf="@+id/correo3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
