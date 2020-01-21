@@ -27,6 +27,8 @@ public class Ingresar extends Activity {
     }
 
     public void registrar(View view) {
+        corr.setText("");
+        contra.setText("");
         Intent i = new Intent(this, Registrar.class );
         startActivity(i);
     }
@@ -57,6 +59,10 @@ public class Ingresar extends Activity {
             }
             if(veridico){
                 Toast.makeText(this,"Si existe el usuario", Toast.LENGTH_LONG).show();
+                corr.setText("");
+                contra.setText("");
+                Intent i4 = new Intent(this, Printers.class);
+                startActivity(i4);
             }else{
                 Toast.makeText(this,"Usuario no valido", Toast.LENGTH_LONG).show();
             }
