@@ -1,13 +1,13 @@
 package com.example.a3dprint_control;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Ingresar extends AppCompatActivity {
+public class Ingresar extends Activity {
 
     private String serverIP = "remotemysql.com";
     private String port = "3306";
@@ -26,8 +26,11 @@ public class Ingresar extends AppCompatActivity {
         contra=(EditText)findViewById(R.id.contraseña);
     }
 
-    public void volver(View view) {
-        finish();
+    public void registrar(View view) {
+        corr.setText("");
+        contra.setText("");
+        Intent i = new Intent(this, Registrar.class );
+        startActivity(i);
     }
 
     public void verificarUsuario(View view)
@@ -46,10 +49,20 @@ public class Ingresar extends AppCompatActivity {
             Class.forName(driver).newInstance();
             resultadoSQL = new AsyncQuery().execute(datosConexion).get();
             Toast.makeText(Ingresar.this,"Conexión Establecida", Toast.LENGTH_LONG).show();
-
             String resultadoConsulta = resultadoSQL[0];
-            if ((resultadoConsulta.indexOf(corr.getText().toString())>-1) &&(resultadoConsulta.indexOf(contra.getText().toString())>-1)){
+            String[] lista=resultadoConsulta.split("\n");
+            boolean veridico=false;
+            for(String dato: lista){
+                if ((dato.indexOf(corr.getText().toString())>-1)&&(dato.indexOf(contra.getText().toString())>-1)&&(!(corr.getText().toString()).equals(""))&&(!(contra.getText().toString()).equals(""))){
+                    veridico=true;
+                }
+            }
+            if(veridico){
                 Toast.makeText(this,"Si existe el usuario", Toast.LENGTH_LONG).show();
+                corr.setText("");
+                contra.setText("");
+                Intent i4 = new Intent(this, Printers.class);
+                startActivity(i4);
             }else{
                 Toast.makeText(this,"Usuario no valido", Toast.LENGTH_LONG).show();
             }
