@@ -11,13 +11,13 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="72dp"
         android:background="@android:color/background_light"
-        android:text="Impresora 1"
+        android:text="ANET A8"
         android:textColor="@android:color/background_dark"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:id="@+id/button"
         android:layout_width="172dp"
         android:layout_height="48dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="192dp"
         android:background="@android:color/holo_blue_dark"
         android:text="Cargar archivo"
         android:textSize="18sp"
@@ -36,9 +36,9 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="123dp"
+        android:layout_width="127dp"
         android:layout_height="116dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="452dp"
         android:background="@drawable/print"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,11 +60,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:text="Ubicación: Norte"
+        android:layout_marginTop="32dp"
+        android:text="Ubicación: FIEC"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -78,5 +78,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:layout_width="172dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="112dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Seleccionar Archivo"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
