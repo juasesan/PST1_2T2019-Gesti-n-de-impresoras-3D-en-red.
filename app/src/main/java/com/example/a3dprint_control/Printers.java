@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class Printers extends Activity {
 
@@ -25,9 +26,6 @@ public class Printers extends Activity {
         startActivity(i);
     }
 
-    public void consultar(View view) {
-        Intent i = new Intent(this, Consulta.class );
-        startActivity(i);
-    }
+
 
 }

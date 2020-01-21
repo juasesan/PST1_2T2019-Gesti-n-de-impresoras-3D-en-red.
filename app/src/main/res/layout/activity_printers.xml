@@ -20,57 +20,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="328dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="356dp"
-        android:text="Consultar impresiones"
-        android:textColor="@android:color/black"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/bt_anet"
         android:layout_width="239dp"
         android:layout_height="65dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="76dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="printer1"
-        android:text="Impresora 1"
+        android:text="Antet A8"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/bt_ender"
         android:layout_width="239dp"
         android:layout_height="65dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="consultar"
-        android:text="Consultar"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="239dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="112dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="printer2"
-        android:text="Impresora 2"
+        android:text="Ender 3"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_anet" />
 
     <TextView
         android:id="@+id/textView9"
@@ -94,13 +68,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="327dp"
-        android:layout_height="61dp"
-        android:text="- Si tienes impresiones ejecutándose o ya ejecutadas, revisa su estado"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 </androidx.constraintlayout.widget.ConstraintLayout>
