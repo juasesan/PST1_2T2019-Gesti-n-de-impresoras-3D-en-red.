@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,11 +19,47 @@ import java.net.URL;
 
 public class Printer2 extends Activity {
     private TextView textosalida;
+    private String serverIP = "remotemysql.com";
+    private String port = "3306";
+    private String userMySQL = "cD2kkGazJC";
+    private String pwdMySQL = "34WoCvLgEW";
+    private String database = "cD2kkGazJC";
+    private String[] datosConexion = null;
+    private TextView nombreIm2;
+    private TextView lugarIm2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_printer2);
         textosalida=(TextView)findViewById(R.id.textJason);
+
+        nombreIm2=(TextView) findViewById(R.id.modelo2);
+        lugarIm2=(TextView) findViewById(R.id.lugar2);
+
+        String[] resultadoSQL = null;
+        try{
+            datosConexion = new String[]{
+                    serverIP,
+                    port,
+                    database,
+                    userMySQL,
+                    pwdMySQL,
+                    "SELECT * FROM Impresora WHERE Id_impresora=2;"
+            };
+            String driver = "com.mysql.jdbc.Driver";
+            Class.forName(driver).newInstance();
+            resultadoSQL = new AsyncQuery().execute(datosConexion).get();
+            String resultadoConsulta = resultadoSQL[0];
+            String[] lista=resultadoConsulta.split(",");
+            nombreIm2.setText("Modelo: "+lista[1]);
+            lugarIm2.setText("Lugar: "+lista[2]);
+
+        }catch(Exception ex)
+        {
+            Toast.makeText(this, "Error al obtener resultados de la consulta Transact-SQL: "
+                    + ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -55,6 +92,7 @@ public class Printer2 extends Activity {
     public  void manejoJson(View view){
         String url = "http://192.168.0.16/api/files/local";
         String respuesta = "";
+
         try {
             respuesta = peticionHttpGet(url);
             JSONObject jsonresult = new JSONObject(respuesta);
@@ -69,4 +107,5 @@ public class Printer2 extends Activity {
             e.printStackTrace();
         }
     }
+
 }
