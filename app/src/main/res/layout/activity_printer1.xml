@@ -11,7 +11,6 @@
         android:id="@+id/button"
         android:layout_width="172dp"
         android:layout_height="48dp"
-        android:layout_marginTop="312dp"
         android:background="@android:color/holo_blue_dark"
         android:onClick="buscarArchivo"
         android:text="Cargar archivo"
@@ -33,15 +32,6 @@
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="172dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="208dp"
-        android:background="@android:color/holo_blue_dark"
-        android:onClick="manejoJson"
-        android:text="Seleccionar Archivo"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,13 +57,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="32dp"
-        android:text="Ubicación"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modelo2" />
 
@@ -102,5 +88,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_file"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:layout_width="172dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="112dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Seleccionar Archivo"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
