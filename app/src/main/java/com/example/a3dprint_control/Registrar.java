@@ -47,9 +47,23 @@ public class Registrar extends Activity {
             String driver2 = "com.mysql.jdbc.Driver";
             Class.forName(driver2).newInstance();
             resultadoSQL = new AsyncQuery().execute(datosConexion).get();
-            String resultadoConsulta = resultadoSQL[0];
+            String resultadoConsulta2 = resultadoSQL[0];
+            String[] lista=resultadoConsulta2.split("\n");
+            lista[0]="Nombre,Contraseña,Correo,User_name";
+            int contador=1;
+            boolean veridico=true;
+            for(String dato: lista){
+                if(contador!=1){
+                    String[] listaCompleta= dato.split(",");
+                    if ((listaCompleta[2].equals(corre.getText().toString()))||((corre.getText().toString()).equals(""))){
+                        veridico=false;
+                    }
+                }else{
+                    contador++;
+                }
+            }
 
-            if((resultadoConsulta.indexOf(corre.getText().toString())==-1)&&(!(corre.getText().toString()).equals(""))){
+            if(veridico){
                 String driver = "com.mysql.jdbc.Driver";
                 Class.forName(driver).newInstance();
 
@@ -76,7 +90,7 @@ public class Registrar extends Activity {
                 finish();
 
             }else{
-                Toast.makeText(this,"Correo ya en uso o no ingreso ningun correo", Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Correo o Usuario ya en uso o no ingreso ningun correo", Toast.LENGTH_LONG).show();
             }
 
         } catch (IllegalAccessException e) {

@@ -17,6 +17,9 @@ public class Printers extends Activity {
 
     public void printer1(View view) {
         Intent i = new Intent(this, Printer1.class );
+        Bundle datos=getIntent().getExtras();
+        String correo=datos.getString("Correo");
+        i.putExtra("Correo",correo);
         startActivity(i);
     }
 
@@ -25,9 +28,5 @@ public class Printers extends Activity {
         startActivity(i);
     }
 
-    public void consultar(View view) {
-        Intent i = new Intent(this, Consulta.class );
-        startActivity(i);
-    }
 
 }
