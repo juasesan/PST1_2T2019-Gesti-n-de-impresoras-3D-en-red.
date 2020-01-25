@@ -2,72 +2,75 @@ package com.example.a3dprint_control;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
-public class Consulta extends Activity {
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+
+public class Consulta extends AppCompatActivity implements View.OnClickListener {
+    String nombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta);
-        String url = "http://192.168.2.219/api/files/local/xyzCalibration_cube.gcode";
-        String respuesta = "";
+        mostrarResult();
+
+
+    }
+
+    public void mostrarResult(){
         try {
-            peticionHttpGet(url);
-            System.out.println("La respuesta es:\n" + respuesta);
+            Bundle bl = getIntent().getExtras();
+            String response = bl.getString("jsonresponse");
+            JSONObject jsonresult = new JSONObject(response);
+            JSONArray array = (JSONArray) jsonresult.get("files");
+            final LinearLayout linearLayout = new LinearLayout(this);
+            setContentView(linearLayout);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            for(int i =0; i<array.length();i++){
+                final JSONObject jsonobj = (JSONObject) array.get(i);
+                TextView textView = new TextView(this);
+                final Button bt_ptint = new Button(this);
+                bt_ptint.setText("Imprimir");
+                bt_ptint.setOnClickListener(this);
+                textView.setText(jsonobj.get("name").toString());
+                linearLayout.addView(textView);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        linearLayout.addView(bt_ptint);
+                        try{
+                            nombre = jsonobj.get("name").toString();
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+            }
+
         } catch (Exception e) {
             // Manejar excepción
             e.printStackTrace();
         }
     }
-    public static void peticionHttpGet(String urlParaVisitar) throws Exception {
-        // Esto es lo que vamos a devolver
-        URL url = new URL(urlParaVisitar);
-
-        // Abrir la conexión e indicar que será de tipo GET
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
-        con.setRequestMethod("POST");
-        con.setDoInput(true);
-        con.setDoOutput(true);
-        //con.connect();
-        con.setRequestProperty("X-Api-Key", "B680B923CCD84F77BFEF7F4B275D394B");
-        con.setRequestProperty("Content-Type", "application/json");
-
-        //con.getOutputStream().write( ("command=select"+"&print="+true).getBytes());
-
-        String jsonInputString = "{\"print\": true, \"command\": \"select\"}";
-
-        try(OutputStream os = con.getOutputStream()) {
-            byte[] input = jsonInputString.getBytes("utf-8");
-            os.write(input, 0, input.length);
-        }
-
-        //conexion.addRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary_string);
-        // Búferes para leer
-        /**InputStream is = con.getInputStream();
-         byte[] b = new byte[1024];
-         while(is.read(b)!= (-1)){
-         StringBuilder buffer = new StringBuilder();
-         buffer.append(new String(b));
-         }**/
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));
-        String response=in.readLine();
-        System.out.print(response);
-        con.disconnect();
-
-    }
 
 
-    public void print(View view) {
 
+    @Override
+    public void onClick(View v) {
+        Intent i = new Intent(this,Impresion.class);
+        i.putExtra("name",nombre);
+        startActivity(i);
     }
 }

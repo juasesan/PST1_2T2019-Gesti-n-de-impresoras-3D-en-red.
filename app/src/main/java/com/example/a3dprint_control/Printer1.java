@@ -14,16 +14,25 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.mysql.fabric.Response;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Printer1 extends Activity {
 
@@ -49,8 +58,8 @@ public class Printer1 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_printer1);
-        nombreIm=(TextView) findViewById(R.id.modelo1);
-        lugarIm=(TextView) findViewById(R.id.lugar1);
+        nombreIm=(TextView) findViewById(R.id.modelo2);
+        lugarIm=(TextView) findViewById(R.id.lugar2);
         btfile=(Button)findViewById(R.id.btn_file);
         String[] resultadoSQL = null;
         try{
@@ -77,50 +86,7 @@ public class Printer1 extends Activity {
                     + ex.getMessage()+ ex.getClass(), Toast.LENGTH_LONG).show();
         }
     }
-    public static String peticionHttpGet(String urlParaVisitar) throws Exception {
-        // Esto es lo que vamos a devolver
-        StringBuilder resultado = new StringBuilder();
-        // Crear un objeto de tipo URL
-        URL url = new URL(urlParaVisitar);
 
-        // Abrir la conexión e indicar que será de tipo GET
-        HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
-        conexion.setRequestMethod("GET");
-        conexion.setRequestProperty("X-Api-Key", "B680B923CCD84F77BFEF7F4B275D394B");
-        //conexion.setRequestProperty("command", "select");
-        //conexion.setRequestProperty("print", "true");
-        // Búferes para leer
-        BufferedReader rd = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
-        String linea;
-        // Mientras el BufferedReader se pueda leer, agregar contenido a resultado
-        while ((linea = rd.readLine()) != null) {
-            resultado.append(linea);
-        }
-        // Cerrar el BufferedReader
-        rd.close();
-        // Regresar resultado, pero como cadena, no como StringBuilder
-        return resultado.toString();
-    }
-
-    public  void manejoJson(View view){
-        String url = "http://192.168.2.219/api/files/local";
-        String respuesta = "";
-        try {
-            respuesta = peticionHttpGet(url);
-            JSONObject jsonresult = new JSONObject(respuesta);
-            JSONArray array = (JSONArray) jsonresult.get("files");
-            for(int i =0; i<array.length();i++){
-                JSONObject jsonobj = (JSONObject) array.get(i);
-                System.out.println(jsonobj);
-                btfile.setText(jsonobj.toString());
-            }
-            Intent i = new Intent(this, Consulta.class );
-            startActivity(i);
-        } catch (Exception e) {
-            // Manejar excepción
-            e.printStackTrace();
-        }
-    }
 
     public void buscarArchivo(View view){
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
@@ -192,5 +158,45 @@ public class Printer1 extends Activity {
                 }
             }
         }
+    }
+
+    public void consulta(View v) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        final String url = "http://192.168.0.16/api/files/local";
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // display response
+                        Log.d("Response", response.toString());
+                        manejarGet(response.toString());
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("Host", "192.168.0.16");
+                params.put("X-Api-Key", "DCB5DB6F053845BDAEDB213B7BDB56FF");
+
+                return params;
+            }
+        };
+        queue.add(getRequest);
+
+
+    }
+
+    public void manejarGet(String response){
+        Intent i = new Intent(this,Consulta.class);
+        i.putExtra("jsonresponse",response);
+        startActivity(i);
     }
 }
