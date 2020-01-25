@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 public class Printer2 extends Activity {
     private TextView textosalida;
     @Override
@@ -24,6 +25,7 @@ public class Printer2 extends Activity {
         textosalida=(TextView)findViewById(R.id.textJason);
 
     }
+
 
     public static String peticionHttpGet(String urlParaVisitar) throws Exception {
         // Esto es lo que vamos a devolver
@@ -62,7 +64,6 @@ public class Printer2 extends Activity {
                 JSONObject jsonobj = (JSONObject) array.get(i);
                 textosalida.setText(jsonobj.toString());
             }
-
         } catch (Exception e) {
             // Manejar excepción
             e.printStackTrace();
