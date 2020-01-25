@@ -22,11 +22,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_file"
         android:layout_width="172dp"
         android:layout_height="48dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="276dp"
         android:background="@android:color/holo_blue_dark"
+        android:onClick="buscarArchivo"
         android:text="Cargar archivo"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,11 +40,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:text="Ubicación"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modelo2" />
 
@@ -51,35 +52,26 @@
         android:id="@+id/textView14"
         android:layout_width="321dp"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="108dp"
         android:text="- Selecciona el archivo con el formato de impresión correcto"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.633"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_file" />
 
     <Button
         android:layout_width="172dp"
         android:layout_height="48dp"
         android:background="@android:color/holo_blue_dark"
-        android:onClick="manejoJson"
+        android:onClick="consulta"
         android:text="Seleccionar Archivo"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_file"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modelo2"
-        app:layout_constraintVertical_bias="0.727" />
-
-    <TextView
-        android:id="@+id/textJason"
-        android:layout_width="317dp"
-        android:layout_height="220dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintVertical_bias="0.705" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
