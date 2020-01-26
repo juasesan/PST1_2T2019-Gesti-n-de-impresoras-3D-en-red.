@@ -3,6 +3,8 @@ package com.example.a3dprint_control;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,28 @@ public class Printers extends Activity {
     public void printer2(View view) {
         Intent i = new Intent(this, Printer2.class );
         startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed(){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(Printers.this);
+        alerta.setMessage("¿Está seguro que desea cerrar sesión?")
+                .setCancelable(false)
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog titulo = alerta.create();
+        titulo.setTitle("Cerrar sesión");
+        titulo.show();
     }
 
 }
