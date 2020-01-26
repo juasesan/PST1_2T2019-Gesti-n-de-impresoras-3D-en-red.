@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +31,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class Printer1 extends Activity {
 
@@ -42,6 +47,7 @@ public class Printer1 extends Activity {
     private String pwdMySQL = "34WoCvLgEW";
     private String database = "cD2kkGazJC";
     private String[] datosConexion = null;
+    private String[] datosConexion1 = null;
     private TextView nombreIm;
     private TextView lugarIm;
     private Button btfile;
@@ -52,12 +58,62 @@ public class Printer1 extends Activity {
     private String correoUsu;
     private static int id_impresion=1;
     private static final int READ_REQUEST_CODE = 42;
+    private ListView listview;
+    private ArrayList<String> archivos;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_printer1);
+
+        //INICIO DEL CODIGO PARA OBTENER LAS RUTAS DE LOS ARCHIVOS
+
+        listview = (ListView) findViewById(R.id.vistaLista);
+        String[] resultadoSQL1 = null;
+        try{
+            datosConexion1 = new String[]{
+                    serverIP,
+                    port,
+                    database,
+                    userMySQL,
+                    pwdMySQL,
+                    "SELECT * FROM Impresion;"
+            };
+            String driver1 = "com.mysql.jdbc.Driver";
+            Class.forName(driver1).newInstance();
+            resultadoSQL1 = new AsyncQuery().execute(datosConexion1).get();
+            String resultadoConsulta1 = resultadoSQL1[0];
+            String []lista1=resultadoConsulta1.split("\n");
+            archivos=new ArrayList<String>();
+            int contador=0;
+            for(String dato: lista1){
+                if(contador!=0){
+                    String[] seccion=dato.split(",");
+                    archivos.add(seccion[5]);
+                    id_impresion=Integer.parseInt(seccion[0])+1;
+                }else{
+                    contador++;
+                }
+
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, archivos);
+            listview.setAdapter(adapter);
+
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+        //FIN DEL CODIGO PARA OBTENER LAS RUTAS DE LOS ARCHIVOS
+
         nombreIm=(TextView) findViewById(R.id.modelo2);
         lugarIm=(TextView) findViewById(R.id.lugar2);
         btfile=(Button)findViewById(R.id.btn_file);
