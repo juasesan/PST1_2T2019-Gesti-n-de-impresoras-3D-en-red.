@@ -25,7 +25,7 @@
         android:id="@+id/btn_file"
         android:layout_width="172dp"
         android:layout_height="48dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="176dp"
         android:background="@android:color/holo_blue_dark"
         android:onClick="buscarArchivo"
         android:text="Cargar archivo"
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="36dp"
         android:text="Ubicación"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +52,7 @@
         android:id="@+id/textView14"
         android:layout_width="321dp"
         android:layout_height="55dp"
+        android:layout_marginTop="36dp"
         android:text="- Selecciona el archivo con el formato de impresión correcto"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +70,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modelo2"
-        app:layout_constraintVertical_bias="0.705" />
+        app:layout_constraintVertical_bias="0.734" />
 
     <ListView
         android:id="@+id/vistaLista"
