@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.042" />
 
     <WebView
-        android:id="@+id/webView"
+        android:id="@+id/webView1"
         android:layout_width="248dp"
         android:layout_height="243dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,8 +42,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView"
-        app:layout_constraintVertical_bias="0.788" />
+
+        app:layout_constraintTop_toBottomOf="@+id/webView1"
+        app:layout_constraintVertical_bias="0.922" />
+
 
     <Button
         android:id="@+id/button3"
@@ -55,8 +57,9 @@
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView"
-        app:layout_constraintVertical_bias="0.788" />
+
+        app:layout_constraintTop_toBottomOf="@+id/webView1"
+        app:layout_constraintVertical_bias="0.922" />
 
     <Button
         android:id="@+id/bt_restart"
@@ -69,8 +72,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView"
-        app:layout_constraintVertical_bias="0.788" />
+
+        app:layout_constraintTop_toBottomOf="@+id/webView1"
+        app:layout_constraintVertical_bias="0.922" />
 
     <TextView
         android:id="@+id/textView2"
@@ -83,8 +87,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintTop_toBottomOf="@+id/webView1"
+        app:layout_constraintVertical_bias="0.132" />
+
 
     <TextView
         android:id="@+id/textView4"
@@ -97,8 +102,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView"
-        app:layout_constraintVertical_bias="0.197" />
+        app:layout_constraintTop_toBottomOf="@+id/webView1"
+        app:layout_constraintVertical_bias="0.257" />
+
 
     <TextView
         android:id="@+id/textView5"
@@ -110,8 +116,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintTop_toBottomOf="@+id/webView1"
+        app:layout_constraintVertical_bias="0.366" />
 
     <TextView
         android:id="@+id/textView6"
@@ -164,7 +170,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/webView" />
+        app:layout_constraintTop_toBottomOf="@+id/webView1" />
 
     <TextView
         android:id="@+id/tv_time_print"
@@ -174,7 +180,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.784"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/webView" />
+        app:layout_constraintTop_toBottomOf="@+id/webView1" />
 
     <TextView
         android:id="@+id/tv_print_current"

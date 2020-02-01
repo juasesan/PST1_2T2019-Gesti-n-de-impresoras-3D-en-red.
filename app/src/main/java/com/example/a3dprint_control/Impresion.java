@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -50,13 +53,18 @@ public class Impresion extends AppCompatActivity {
         tx_time=(TextView)findViewById(R.id.tv_time);
         tx_state=(TextView)findViewById(R.id.tv_state);
         obtener_info();
+        WebView webView1 = (WebView) findViewById(R.id.webView1);
+        WebSettings conf = webView1.getSettings();
+        conf.setJavaScriptEnabled(true);
+        webView1.setWebViewClient(new WebViewClient());
+        webView1.loadUrl("http://192.168.43.100/#control");
 
     }
 
     public void imprimir(String nombre) {
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
-            String URL = "http://192.168.0.16/api/files/local/"+nombre;
+            String URL = "http://192.168.43.100/api/files/local/"+nombre;
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("command", "select");
             jsonBody.put("print", true);
@@ -90,8 +98,8 @@ public class Impresion extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String>  params = new HashMap<String, String>();
-                    params.put("Host", "192.168.0.16");
-                    params.put("X-Api-Key", "DCB5DB6F053845BDAEDB213B7BDB56FF");
+                    params.put("Host", "192.168.43.100");
+                    params.put("X-Api-Key", "B680B923CCD84F77BFEF7F4B275D394B");
 
                     return params;
                 }
@@ -117,7 +125,7 @@ public class Impresion extends AppCompatActivity {
     public void calcelar(View v){
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
-            String URL = "http://192.168.0.16/api/job";
+            String URL = "http://192.168.43.100/api/job";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("command", "cancel");
             final String mRequestBody = jsonBody.toString();
@@ -150,8 +158,8 @@ public class Impresion extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String>  params = new HashMap<String, String>();
-                    params.put("Host", "192.168.0.16");
-                    params.put("X-Api-Key", "DCB5DB6F053845BDAEDB213B7BDB56FF");
+                    params.put("Host", "192.168.43.100");
+                    params.put("X-Api-Key", "B680B923CCD84F77BFEF7F4B275D394B");
 
                     return params;
                 }
@@ -178,7 +186,7 @@ public class Impresion extends AppCompatActivity {
         btn_restat.setEnabled(true);
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
-            String URL = "http://192.168.0.16/api/job";
+            String URL = "http://192.168.43.100/api/job";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("command", "pause");
             jsonBody.put("action", "pause");
@@ -212,8 +220,8 @@ public class Impresion extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String>  params = new HashMap<String, String>();
-                    params.put("Host", "192.168.0.16");
-                    params.put("X-Api-Key", "DCB5DB6F053845BDAEDB213B7BDB56FF");
+                    params.put("Host", "192.168.43.100");
+                    params.put("X-Api-Key", "B680B923CCD84F77BFEF7F4B275D394B");
 
                     return params;
                 }
@@ -240,7 +248,7 @@ public class Impresion extends AppCompatActivity {
         btn_restat.setEnabled(false);
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
-            String URL = "http://192.168.0.16/api/job";
+            String URL = "http://192.168.43.100/api/job";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("command", "pause");
             jsonBody.put("action", "resume");
@@ -274,8 +282,8 @@ public class Impresion extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String>  params = new HashMap<String, String>();
-                    params.put("Host", "192.168.0.16");
-                    params.put("X-Api-Key", "DCB5DB6F053845BDAEDB213B7BDB56FF");
+                    params.put("Host", "192.168.43.100");
+                    params.put("X-Api-Key", "B680B923CCD84F77BFEF7F4B275D394B");
 
                     return params;
                 }
@@ -300,7 +308,7 @@ public class Impresion extends AppCompatActivity {
 
     public void obtener_info(){
         RequestQueue queue = Volley.newRequestQueue(this);
-        final String url = "http://192.168.0.16/api/job";
+        final String url = "http://192.168.43.100/api/job";
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -322,8 +330,8 @@ public class Impresion extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Host", "192.168.0.16");
-                params.put("X-Api-Key", "DCB5DB6F053845BDAEDB213B7BDB56FF");
+                params.put("Host", "192.168.43.100");
+                params.put("X-Api-Key", "B680B923CCD84F77BFEF7F4B275D394B");
 
                 return params;
             }

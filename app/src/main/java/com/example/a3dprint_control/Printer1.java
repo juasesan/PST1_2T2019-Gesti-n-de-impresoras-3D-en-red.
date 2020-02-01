@@ -91,8 +91,7 @@ public class Printer1 extends Activity {
 
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, archivos);
-            listview.setAdapter(adapter);
-
+            //listview.setAdapter(adapter);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {
@@ -103,7 +102,7 @@ public class Printer1 extends Activity {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
-            }
+      
 
         //FIN DEL CODIGO PARA OBTENER LAS RUTAS DE LOS ARCHIVOS
 
@@ -211,7 +210,7 @@ public class Printer1 extends Activity {
 
     public void consulta(View v) {
         RequestQueue queue = Volley.newRequestQueue(this);
-        final String url = "http://192.168.0.16/api/files/local";
+        final String url = "http://192.168.43.100/api/files/local";
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -232,8 +231,8 @@ public class Printer1 extends Activity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Host", "192.168.0.16");
-                params.put("X-Api-Key", "DCB5DB6F053845BDAEDB213B7BDB56FF");
+                params.put("Host", "192.168.43.100");
+                params.put("X-Api-Key", "B680B923CCD84F77BFEF7F4B275D394B");
 
                 return params;
             }
