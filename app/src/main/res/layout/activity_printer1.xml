@@ -48,18 +48,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modelo2" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="321dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="108dp"
-        android:text="- Selecciona el archivo con el formato de impresión correcto"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.633"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_file" />
-
     <Button
         android:layout_width="172dp"
         android:layout_height="48dp"
@@ -73,5 +61,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modelo2"
         app:layout_constraintVertical_bias="0.705" />
+
+    <ListView
+        android:id="@+id/vistaLista"
+        android:layout_width="409dp"
+        android:layout_height="276dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_file" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
