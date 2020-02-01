@@ -91,7 +91,7 @@ public class Printer1 extends Activity {
 
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, archivos);
-            //listview.setAdapter(adapter);
+            listview.setAdapter(adapter);
 
         } catch (IllegalAccessException e) {
             e.printStackTrace();
