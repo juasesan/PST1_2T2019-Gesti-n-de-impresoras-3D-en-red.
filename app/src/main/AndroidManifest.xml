@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Impresion"></activity>
+        <activity android:name=".Impresion" />
         <activity android:name=".Consulta" />
         <activity android:name=".Printer2" />
         <activity android:name=".Printer1" />

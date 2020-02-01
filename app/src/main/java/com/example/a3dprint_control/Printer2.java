@@ -1,7 +1,5 @@
 package com.example.a3dprint_control;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +8,7 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONStringer;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -32,7 +30,7 @@ public class Printer2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_printer2);
-        textosalida=(TextView)findViewById(R.id.textJason);
+        textosalida=(TextView)findViewById(R.id.textView14);
 
         nombreIm2=(TextView) findViewById(R.id.modelo2);
         lugarIm2=(TextView) findViewById(R.id.lugar2);
